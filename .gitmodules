@@ -1,0 +1,6 @@
+[submodule "DemoServer/automatix-realtime"]
+	path = DemoServer/automatix-realtime
+	url = git@github.com:LINKHA/automatix-realtime.git
+[submodule "DemoServer/automatix"]
+	path = DemoServer/automatix
+	url = git@github.com:LINKHA/automatix.git
