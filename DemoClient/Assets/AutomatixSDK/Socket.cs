@@ -21,7 +21,7 @@ namespace Automatix
     public enum SocketProtocolType
     {
         Tcp,
-        TcpMoon,
+        TcpAmx,
     }
 
     class LogicException : ApplicationException
@@ -67,9 +67,9 @@ namespace Automatix
         {
             switch (protocolType)
             {
-                case SocketProtocolType.TcpMoon:
+                case SocketProtocolType.TcpAmx:
                     {
-                        return new MoonConnection();
+                        return new AmxConnection();
                     }
                 case SocketProtocolType.Tcp:
                     {
