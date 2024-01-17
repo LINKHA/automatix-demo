@@ -1,7 +1,7 @@
 using System;
 using System.Net.Http;
 using System.Text;
-using Newtonsoft.Json;
+using UnityEngine;
 
 namespace Automatix
 {
@@ -25,13 +25,24 @@ namespace Automatix
 
             Console.WriteLine(str);
         }
-
+        public class MyClass
+        {
+            public int level;
+            public float timeElapsed;
+            public string playerName;
+        }
         public async void Post(string suffix)
         {
+            MyClass myObject = new MyClass();
+            myObject.level = 1;
+            myObject.timeElapsed = 47.5f;
+            myObject.playerName = "Dr Charles Francis";
+            string json = JsonUtility.ToJson(myObject);
+
             var response = await client.PostAsync(
                 url + suffix,
                 new StringContent(
-                JsonConvert.SerializeObject(new { Name = "ะกร๗", Id = 1 }),
+                json,
                 Encoding.UTF8,
                 "application/json")
             );
