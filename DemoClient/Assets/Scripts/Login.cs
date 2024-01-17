@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Login : MonoBehaviour
 {
@@ -14,5 +15,13 @@ public class Login : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnClickLogin() {
+        //GlobalVariables.IPstr = IPInputField.text;
+        //GlobalVariables.PortStr = PortInputField.text;
+
+        Automatix.Http httpCli = new Automatix.Http("http://" + GlobalVariables.IPstr);
+        httpCli.Post(GlobalVariables.PortStr + "/login/fastLogin");
     }
 }

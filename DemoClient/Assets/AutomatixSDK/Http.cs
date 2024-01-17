@@ -27,16 +27,14 @@ namespace Automatix
         }
         public class MyClass
         {
-            public int level;
-            public float timeElapsed;
-            public string playerName;
+            public string mobile;
+            public string password;
         }
         public async void Post(string suffix)
         {
             MyClass myObject = new MyClass();
-            myObject.level = 1;
-            myObject.timeElapsed = 47.5f;
-            myObject.playerName = "Dr Charles Francis";
+            myObject.mobile = "1885740001";
+            myObject.password = "123456";
             string json = JsonUtility.ToJson(myObject);
 
             var response = await client.PostAsync(
