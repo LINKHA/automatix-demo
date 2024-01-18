@@ -51,7 +51,7 @@ namespace Automatix
 
             var str = await response.Content.ReadAsStringAsync();
 
-            Console.WriteLine(str);
+            Debug.Log(str);
         }
     }
 }

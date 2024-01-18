@@ -21,7 +21,7 @@ public class Launch : MonoBehaviour
 
         if (PortInputField.text.Length == 0)
         {
-            PortInputField.text = 12345.ToString();
+            PortInputField.text = 8888.ToString();
         }
     }
 
@@ -40,7 +40,7 @@ public class Launch : MonoBehaviour
 
         if (PortInputField.text.Length == 0)
         {
-            PortInputField.text = 12345.ToString();
+            PortInputField.text = 8888.ToString();
         }
         
         GlobalVariables.IPstr = IPInputField.text;
