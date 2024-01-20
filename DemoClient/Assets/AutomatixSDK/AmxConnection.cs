@@ -1,6 +1,6 @@
 using System.Net;
 
-namespace Automatix
+namespace Amx
 {
     public class AmxConnection : BaseConnection
     {

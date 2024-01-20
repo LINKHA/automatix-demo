@@ -1,4 +1,4 @@
-﻿namespace Automatix
+﻿namespace Amx
 {
     public class StreamConnection : BaseConnection
     {

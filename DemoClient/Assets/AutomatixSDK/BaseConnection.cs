@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 
-namespace Automatix
+namespace Amx
 {
     public enum ReadMode
     {

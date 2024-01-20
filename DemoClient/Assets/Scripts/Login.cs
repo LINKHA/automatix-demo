@@ -5,6 +5,20 @@ using UnityEngine.UI;
 
 public class Login : MonoBehaviour
 {
+    public class LoginFastLoginReq
+    {
+        public string mobile;
+        public string password;
+    }
+
+    public class LoginFastLoginResp
+    {
+        public string accessToken;
+        public int accessExpire;
+        public int refreshAfter;
+    }
+
+
     InputField AccountInputField;
     InputField PasswordInputField;
     // Start is called before the first frame update
@@ -29,11 +43,15 @@ public class Login : MonoBehaviour
         
     }
 
-    public void OnClickLogin() {
-        //GlobalVariables.IPstr = IPInputField.text;
-        //GlobalVariables.PortStr = PortInputField.text;
+    public async void OnClickLogin() {
 
-        Automatix.Http httpCli = new Automatix.Http("http://" + GlobalVariables.IPstr + ":");
-        httpCli.Post(GlobalVariables.PortStr + "/login/fastLogin");
+        string json = JsonUtility.ToJson(new LoginFastLoginReq
+        {
+            mobile = "1885740001",
+            password = "123456"
+        });
+
+        string result = await _G.HttpCli.Post("/login/fastLogin", json);
+        LoginFastLoginResp resp = JsonUtility.FromJson<LoginFastLoginResp>(result);
     }
 }

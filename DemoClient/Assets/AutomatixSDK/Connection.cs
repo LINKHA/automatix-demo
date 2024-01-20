@@ -1,7 +1,7 @@
 using System;
 using System.Net;
 
-namespace Automatix
+namespace Amx
 {
     public class Connection : BaseConnection
     {

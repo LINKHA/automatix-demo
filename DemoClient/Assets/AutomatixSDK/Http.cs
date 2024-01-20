@@ -1,17 +1,18 @@
 using System;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Automatix
+namespace Amx
 {
-    public class Http
+    public class HttpCli
     {
         HttpClient client = new HttpClient();
         string url;
-        public Http(string url)
+        public HttpCli(string ip, string port)
         {
-            this.url = url; 
+            url = "http://" + ip + ":" + port; 
         }
 
         public async void Get(string suffix)
@@ -25,18 +26,9 @@ namespace Automatix
 
             Console.WriteLine(str);
         }
-        public class MyClass
-        {
-            public string mobile;
-            public string password;
-        }
-        public async void Post(string suffix)
-        {
-            MyClass myObject = new MyClass();
-            myObject.mobile = "1885740001";
-            myObject.password = "123456";
-            string json = JsonUtility.ToJson(myObject);
 
+        public async Task<string> Post(string suffix, string json)
+        {
             var response = await client.PostAsync(
                 url + suffix,
                 new StringContent(
@@ -50,8 +42,7 @@ namespace Automatix
             var headers = response.Headers;
 
             var str = await response.Content.ReadAsStringAsync();
-
-            Debug.Log(str);
+            return str;
         }
     }
 }

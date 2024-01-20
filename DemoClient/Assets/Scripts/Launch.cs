@@ -43,8 +43,10 @@ public class Launch : MonoBehaviour
             PortInputField.text = 8888.ToString();
         }
         
-        GlobalVariables.IPstr = IPInputField.text;
-        GlobalVariables.PortStr = PortInputField.text;
+        _G.IPstr = IPInputField.text;
+        _G.PortStr = PortInputField.text;
+
+        _G.HttpCli = new Amx.HttpCli(_G.IPstr, _G.PortStr);
 
         SceneManager.LoadScene("Login");
     }
