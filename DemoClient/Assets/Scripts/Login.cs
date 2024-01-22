@@ -1,22 +1,12 @@
+using Amx;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Login : MonoBehaviour
 {
-    public class LoginFastLoginReq
-    {
-        public string mobile;
-        public string password;
-    }
-
-    public class LoginFastLoginResp
-    {
-        public string accessToken;
-        public int accessExpire;
-        public int refreshAfter;
-    }
 
 
     InputField AccountInputField;
@@ -45,13 +35,7 @@ public class Login : MonoBehaviour
 
     public async void OnClickLogin() {
 
-        string json = JsonUtility.ToJson(new LoginFastLoginReq
-        {
-            mobile = "1885740001",
-            password = "123456"
-        });
-
-        string result = await _G.HttpCli.Post("/login/fastLogin", json);
-        LoginFastLoginResp resp = JsonUtility.FromJson<LoginFastLoginResp>(result);
+        LoginFastLoginResp resp = await _G.AmxCli.FastLogin(AccountInputField.text, PasswordInputField.text);
+        SceneManager.LoadScene("ServerSelect");
     }
 }

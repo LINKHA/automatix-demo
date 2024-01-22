@@ -23,6 +23,10 @@ public class Launch : MonoBehaviour
         {
             PortInputField.text = 8888.ToString();
         }
+
+        _G.AmxCli = new Amx.AmxClient();
+
+        _G.HttpCli = new Amx.HttpCli();
     }
 
     // Update is called once per frame
@@ -45,8 +49,7 @@ public class Launch : MonoBehaviour
         
         _G.IPstr = IPInputField.text;
         _G.PortStr = PortInputField.text;
-
-        _G.HttpCli = new Amx.HttpCli(_G.IPstr, _G.PortStr);
+        _G.HttpCli.SetOpt(_G.IPstr, _G.PortStr);
 
         SceneManager.LoadScene("Login");
     }
