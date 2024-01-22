@@ -1,3 +1,4 @@
+
 public static class _G
 {
     public static string IPstr;
@@ -8,5 +9,7 @@ public static class _G
 
     public static string RtIpstr;
     public static string RtPortStr;
+
+    public static Amx.Socket RtSocket;
     
 }

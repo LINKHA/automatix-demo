@@ -2,6 +2,7 @@ using Amx;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Net.Sockets;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
@@ -74,5 +75,7 @@ public class ServerSelect : MonoBehaviour
         }).Wait();
         _G.RtIpstr = enterServerResp.host;
         _G.RtPortStr = enterServerResp.port;
+
+        _G.RtSocket.Connect(enterServerResp.host, int.Parse(enterServerResp.port), SocketProtocolType.Tcp);
     }
 }
