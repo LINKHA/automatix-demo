@@ -458,7 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ceff2fc87234e489ba01cf372b13fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPrefab: {fileID: 1186797187631189566, guid: 5df731b41bd110a4e9e2ef179759c0f7, type: 3}
+  buttonPrefab: {fileID: 1186797187631189564, guid: 5df731b41bd110a4e9e2ef179759c0f7, type: 3}
   parentButtonPrefab: {fileID: 1831711440}
 --- !u!114 &1831711442
 MonoBehaviour:

@@ -5,5 +5,8 @@ public static class _G
 
     public static Amx.AmxClient AmxCli;
     public static Amx.HttpCli HttpCli;
+
+    public static string RtIpstr;
+    public static string RtPortStr;
     
 }

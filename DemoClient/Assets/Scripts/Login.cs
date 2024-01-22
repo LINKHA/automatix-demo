@@ -35,7 +35,7 @@ public class Login : MonoBehaviour
 
     public async void OnClickLogin() {
 
-        LoginFastLoginResp resp = await _G.AmxCli.FastLogin(AccountInputField.text, PasswordInputField.text);
+        FastLoginResp resp = await _G.AmxCli.FastLogin(AccountInputField.text, PasswordInputField.text);
         SceneManager.LoadScene("ServerSelect");
     }
 }

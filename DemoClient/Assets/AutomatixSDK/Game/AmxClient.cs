@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using static UnityEngine.AudioSettings;
 
 namespace Amx
 {
@@ -15,16 +16,16 @@ namespace Amx
             public Int64 refreshAfter;
         }
         UserSession session = new UserSession();
-        public async Task<LoginFastLoginResp> FastLogin(string mobile, string password)
+        public async Task<FastLoginResp> FastLogin(string mobile, string password)
         {
-            string json = JsonUtility.ToJson(new LoginFastLoginReq
+            string json = JsonUtility.ToJson(new FastLoginReq
             {
                 mobile = mobile,
                 password = password
             });
 
             string result = await _G.HttpCli.Post("/login/fastLogin", json);
-            LoginFastLoginResp resp = JsonUtility.FromJson<LoginFastLoginResp>(result);
+            FastLoginResp resp = JsonUtility.FromJson<FastLoginResp>(result);
             
             session.accessToken = resp.accessToken;
             session.accessExpire = resp.accessExpire;
@@ -36,13 +37,43 @@ namespace Amx
         public async Task<GetServerListResp> GetServerList()
         {
             string json = JsonUtility.ToJson(new GetServerListReq{});
-
-            string result = await _G.HttpCli.Post("/servermanager/getServerList", json, new Dictionary<string, string>
+            var headers = new Dictionary<string, string>
             {
                 { "Authorization", session.accessToken }
+            };
+            string result = await _G.HttpCli.Post("/servermanager/getServerList", json, headers);
+            GetServerListResp resp = JsonUtility.FromJson<GetServerListResp>(result);
+
+            return resp;
+        }
+
+
+        public async Task<LoginServerResp> LoginServer(string serverId)
+        {
+            string json = JsonUtility.ToJson(new LoginServerReq
+            {
+                serverId = serverId
             });
 
-            GetServerListResp resp = JsonUtility.FromJson<GetServerListResp>(result);
+            string result = await _G.HttpCli.Post("/login/fastLogin", json);
+            LoginServerResp resp = JsonUtility.FromJson<LoginServerResp>(result);
+
+            return resp;
+        }
+
+        public async Task<EnterServerResp> EnterServer(string serverCode)
+        {
+            string json = JsonUtility.ToJson(new EnterServerReq{
+                serverCode = serverCode
+            });
+            var headers = new Dictionary<string, string>
+            {
+                { "Authorization", session.accessToken }
+            };
+
+            string result = await _G.HttpCli.Post("/login/enterServer", json, headers);
+
+            EnterServerResp resp = JsonUtility.FromJson<EnterServerResp>(result);
 
             return resp;
         }
