@@ -54,8 +54,11 @@ namespace Amx
             {
                 serverId = serverId
             });
-
-            string result = await _G.HttpCli.Post("/login/fastLogin", json);
+            var headers = new Dictionary<string, string>
+            {
+                { "Authorization", session.accessToken }
+            };
+            string result = await _G.HttpCli.Post("/login/loginServer", json, headers);
             LoginServerResp resp = JsonUtility.FromJson<LoginServerResp>(result);
 
             return resp;

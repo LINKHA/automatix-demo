@@ -5,6 +5,7 @@ using System.Data.Common;
 using System.Net.Sockets;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ServerSelect : MonoBehaviour
@@ -77,5 +78,6 @@ public class ServerSelect : MonoBehaviour
         _G.RtPortStr = enterServerResp.port;
 
         _G.RtSocket.Connect(enterServerResp.host, int.Parse(enterServerResp.port), SocketProtocolType.Tcp);
+        SceneManager.LoadScene("Hall");
     }
 }
